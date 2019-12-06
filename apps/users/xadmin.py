@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2019/12/5 0005 13:10
+# @Author  : 没有蜡笔的小新
+# @E-mail  : sqw123az@sina.com
+# @FileName: xadmin.py
+# @Software: PyCharm
+# @Blog    ：https://blog.csdn.net/Asunqingwen
+# @GitHub  ：https://github.com/Asunqingwen
+# @WebSite : labixiaoxin.me
+import xadmin
+from xadmin import views
+
+from .models import VerifyCode
+
+
+class BaseSetting(object):
+	"""
+	添加主题功能
+	"""
+	enable_themes = True
+	use_bootswatch = True
+
+
+class GlobalSetting(object):
+	"""
+	全局配置，后台管理标题和页脚
+	"""
+	site_title = "旺达的鱼"
+	site_footer = "http://www.cnblogs.com/derek1184405959/"
+	# 菜单收缩
+	menu_style = "accordion"
+
+
+class VerifyCodeAdmin(object):
+	list_display = ['code', 'mobile', 'add_time']
+
+
+xadmin.site.register(VerifyCode, VerifyCodeAdmin)
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+xadmin.site.register(views.CommAdminView, GlobalSetting)
