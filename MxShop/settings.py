@@ -151,7 +151,8 @@ REST_FRAMEWORK = {
 		'rest_framework.authentication.BasicAuthentication',
 		'rest_framework.authentication.SessionAuthentication',
 		# 'rest_framework_jwt.authentication.JSONWebTokenAuthentication', #有些接口不需要jwt认证
-	)
+	),
+	'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'  # 如果不加，不能自动生成api文档
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
